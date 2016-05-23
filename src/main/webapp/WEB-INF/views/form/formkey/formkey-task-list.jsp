@@ -51,7 +51,7 @@
 			<th>操作</th>
 		</tr>
 
-		<c:forEach items="${tasks }" var="task">
+		<c:forEach items="${page.result }" var="task">
 		<tr>
 			<td>${task.id }</td>
 			<td>${task.taskDefinitionKey }</td>
@@ -65,8 +65,7 @@
 			<td>${task.owner }</td>
 			<td>
 				<c:if test="${empty task.assignee }">
-					<a class="claim" tid="${task.id}" href="javascript:;">签收</a>
-					<a class="handle" style="display:none" tkey='${task.taskDefinitionKey }' tname='${task.name }' tid='${task.id }' href="javascript:;">办理</a>
+					<a class="claim" href="${ctx }/form/formkey/task/claim/${task.id}">签收</a>
 				</c:if>
 				<c:if test="${not empty task.assignee }">
 					<%-- 此处用tkey记录当前节点的名称 --%>
@@ -76,7 +75,7 @@
 		</tr>
 		</c:forEach>
 	</table>
-
+	<tags:pagination page="${page}" paginationSize="${page.pageSize}"/>
 	<!-- 办理任务对话框 -->
 	<div id="handleTemplate" class="template"></div>
 
