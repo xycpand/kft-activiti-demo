@@ -535,9 +535,6 @@
                 <jdbc.password></jdbc.password>
                 <hibernate.dialect>org.hibernate.dialect.H2Dialect</hibernate.dialect>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <build>
                 <resources>
                     <resource>
@@ -553,19 +550,20 @@
             <id>mysql</id>
             <properties>
                 <db.type>mysql</db.type>
-
                 <!-- driver -->
                 <jdbc.driver.groupId>mysql</jdbc.driver.groupId>
                 <jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
                 <jdbc.driver.version>5.1.11</jdbc.driver.version>
-
                 <!-- driver configs -->
                 <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
-                <jdbc.url><![CDATA[jdbc:mysql://localhost:3306/kad?useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
-                <jdbc.username>root</jdbc.username>
-                <jdbc.password>root</jdbc.password>
+                <jdbc.url><![CDATA[jdbc:mysql://115.29.7.155/activiti?useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
+                <jdbc.username>mtuser</jdbc.username>
+                <jdbc.password>mtuser</jdbc.password>
                 <hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <resources>
                     <resource>
