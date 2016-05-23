@@ -1,4 +1,9 @@
-/target
+/target/
+/.settings/
+/work/
+/bin/
+/.classpath
+/.project
 /src/main/resources/application.local.properties
 /src/test/resources/application.test.local.properties
 *~
@@ -9,3 +14,4 @@
 .idea
 rebel.xml
 .settings
+
