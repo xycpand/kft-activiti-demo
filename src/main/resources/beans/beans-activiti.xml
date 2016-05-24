@@ -24,10 +24,10 @@
         <property name="processDefinitionCacheLimit" value="10"/>
 
         <!-- mail -->
-        <property name="mailServerHost" value="localhost"/>
-        <property name="mailServerUsername" value="kafeitu"/>
-        <property name="mailServerPassword" value="000000"/>
-        <property name="mailServerPort" value="2025"/>
+        <property name="mailServerHost" value="smtp.163.com"/>
+        <property name="mailServerUsername" value="13692228034@163.com"/>
+        <property name="mailServerPassword" value="mq9615"/>
+        <property name="mailServerPort" value="25000"/>
 
         <!-- UUID作为主键生成策略
         <property name="idGenerator" ref="uuidGenerator" />
@@ -72,7 +72,7 @@
             </map>
         </property>
     </bean>
-
+<!-- Activiti 的 Java 编程模型的核心是 ProcessEngine,所有其他 service 都必须从 ProcessEngine 对象获取 -->
     <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
         <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
     </bean>

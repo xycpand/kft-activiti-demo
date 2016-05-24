@@ -80,13 +80,15 @@ public class LeaveWorkflowServiceTest extends SpringTransactionalTestCase {
 				.processInstanceBusinessKey(leave.getId().toString()).singleResult();
 		assertNotNull(processInstance);
 		
-		// 部门领导
+		//获取指定用户(部门领导)的任务列表
 		Task task = taskService.createTaskQuery().taskCandidateGroup("deptLeader").singleResult();
 		assertNotNull(task);
+		//使用指定用户领取任务
 		taskService.claim(task.getId(), "leaderuser");
 		
 		variables = new HashMap<String, Object>();
 		variables.put("deptLeaderPass", true);
+		//完成任务
 		taskService.complete(task.getId(), variables);
 		
 		// HR

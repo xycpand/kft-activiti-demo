@@ -65,10 +65,15 @@ public class LeaveWorkflowService {
             /*
              *  在启动流程实例时，通过重载startProcessInstanceByKey的方法可以加载流程变量。
              *  参数variables要求是Map<String ,Object>类型，意味着可以添加多个流程变量。
-             *  当这段代码执行完以后，会在数据库表act_ru_variable中添加两行记录
+             *  当这段代码执行完以后，会在数据库表act_ru_variable中添加两行记录,
+             *  act_ru_execution表中创建一条“运行时流程执行实例”，该实例包含“业务id”businessKey
              */
             processInstance = runtimeService.startProcessInstanceByKey("leave", businessKey, variables);
             String processInstanceId = processInstance.getId();
+            /*
+             * 在业务表设计的时候添加一列：process_instance_id varchar(255)，
+             * 在流程启动之后把流程ID更新到业务表中，这样不管从业务还是流程(act_ru_execution)都可以查询到对方！
+             */
             entity.setProcessInstanceId(processInstanceId);
             logger.debug("start process of {key={}, bkey={}, pid={}, variables={}}", new Object[]{"leave", businessKey, processInstanceId, variables});
         } finally {
@@ -151,6 +156,7 @@ public class LeaveWorkflowService {
     @Transactional(readOnly = true)
     public List<Leave> findFinishedProcessInstaces(Page<Leave> page, int[] pageParams) {
         List<Leave> results = new ArrayList<Leave>();
+        //查询指定流程实例的状态
         HistoricProcessInstanceQuery query = historyService.createHistoricProcessInstanceQuery().processDefinitionKey("leave").finished().orderByProcessInstanceEndTime().desc();
         List<HistoricProcessInstance> list = query.listPage(pageParams[0], pageParams[1]);
 

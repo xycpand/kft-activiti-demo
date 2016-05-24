@@ -14,7 +14,7 @@ import java.util.Date;
 /**
  * 销假后处理器
  * <p>设置销假时间</p>
- * <p>使用Spring代理，可以注入Bean，管理事物</p>
+ * <p>使用Spring代理，可以注入Bean，管理事务</p>
  *
  * @author HenryYan
  */
