@@ -18,7 +18,13 @@ public class LeaveEntityManager {
 
     @PersistenceContext
     private EntityManager entityManager;
-
+    
+    /**
+     *  把流程变量的值赋值给JPA实体对象并保存到数据库
+     *  ps:当启动流程后查看表LEAVE_JPA中的数据与表单填写的一致
+     * @param execution
+     * @return
+     */
     @Transactional
     public LeaveJpaEntity newLeave(DelegateExecution execution) {
         LeaveJpaEntity leave = new LeaveJpaEntity();

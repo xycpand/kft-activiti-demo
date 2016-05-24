@@ -81,7 +81,6 @@
             <artifactId>activiti-json-converter</artifactId>
             <version>${activiti.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.activiti</groupId>
             <artifactId>activiti-explorer</artifactId>

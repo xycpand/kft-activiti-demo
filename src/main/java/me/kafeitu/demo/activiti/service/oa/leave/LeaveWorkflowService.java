@@ -62,7 +62,11 @@ public class LeaveWorkflowService {
         try {
             // 用来设置启动流程的人员ID，引擎会自动把用户ID保存到activiti:initiator中
             identityService.setAuthenticatedUserId(entity.getUserId());
-
+            /*
+             *  在启动流程实例时，通过重载startProcessInstanceByKey的方法可以加载流程变量。
+             *  参数variables要求是Map<String ,Object>类型，意味着可以添加多个流程变量。
+             *  当这段代码执行完以后，会在数据库表act_ru_variable中添加两行记录
+             */
             processInstance = runtimeService.startProcessInstanceByKey("leave", businessKey, variables);
             String processInstanceId = processInstance.getId();
             entity.setProcessInstanceId(processInstanceId);

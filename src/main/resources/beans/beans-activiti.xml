@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+     <!-- org.activiti.rest.service里面包含了所有Rest API的接口RestController -->
     <context:component-scan
             base-package="org.activiti.conf,org.activiti.rest.editor,org.activiti.rest.service">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>

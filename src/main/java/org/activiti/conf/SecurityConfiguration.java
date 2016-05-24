@@ -9,7 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-
+/**
+ * Rest安全认证组件
+ * @author zhangshuai
+ */
 @Configuration
 @EnableWebSecurity
 @EnableWebMvcSecurity

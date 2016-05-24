@@ -3,6 +3,7 @@
   <display-name>activiti</display-name>
   <context-param>
     <param-name>contextConfigLocation</param-name>
+   <!--  Activiti引擎的beans -->
     <param-value>classpath*:/beans/beans-*.xml</param-value>
   </context-param>
   <listener>

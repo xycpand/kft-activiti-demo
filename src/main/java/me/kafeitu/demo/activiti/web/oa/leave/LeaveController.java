@@ -73,6 +73,11 @@ public class LeaveController {
                 return "redirect:/login?timeout=true";
             }
             leave.setUserId(user.getId());
+            /*
+             * 创建流程变量
+             * 例如请假流程中有请假天数、请假原因等一些参数都为流程变量的范围。
+             * 流程变量的作用域范围是流程实例。也就是说各个流程实例的流程变量是不相互影响的。
+             */
             Map<String, Object> variables = new HashMap<String, Object>();
             ProcessInstance processInstance = workflowService.startWorkflow(leave, variables);
             redirectAttributes.addFlashAttribute("message", "流程已启动，流程ID：" + processInstance.getId());

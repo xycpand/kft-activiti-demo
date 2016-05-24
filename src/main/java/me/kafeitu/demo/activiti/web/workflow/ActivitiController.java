@@ -77,7 +77,10 @@ public class ActivitiController {
     protected RepositoryService repositoryService;
 
     protected RuntimeService runtimeService;
-
+    /*
+     * 在办理任务时，有时候任务办理完成以后，要传递一些信息到系统中。
+     * 这个时候可以利用TaskService这个类来添加流程实例。 
+     */
     protected TaskService taskService;
 
     protected WorkflowTraceService traceService;
@@ -316,7 +319,7 @@ public class ActivitiController {
         User user = UserUtil.getUserFromSession(session);
         List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-
+         
         // 已经签收的任务
         List<Task> todoList = taskService.createTaskQuery().taskAssignee(user.getId()).active().list();
         for (Task task : todoList) {
