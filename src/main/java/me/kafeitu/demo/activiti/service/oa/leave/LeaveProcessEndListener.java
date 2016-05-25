@@ -11,7 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 请假流程结束监听器
- *
+ *ps:对于实现了org.activiti.engine.delegate包中的接口的类需要被事务控制的实现类需要被Spring代理，
+ *并且添加事务的Annotation或者在xml中配置
  * @author: Henry Yan
  */
 @Service
