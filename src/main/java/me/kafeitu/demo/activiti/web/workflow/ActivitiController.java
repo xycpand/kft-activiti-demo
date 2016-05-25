@@ -229,7 +229,7 @@ public class ActivitiController {
         ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processInstanceId(executionId).singleResult();
         BpmnModel bpmnModel = repositoryService.getBpmnModel(processInstance.getProcessDefinitionId());
         List<String> activeActivityIds = runtimeService.getActiveActivityIds(executionId);
-        // 不使用spring请使用下面的两行代码
+        // 不使用spring请使用下面的两行代码:会在第一次调用时 初始化并创建一个流程引擎，以后再调用就会返回相同的流程引擎
 //    ProcessEngineImpl defaultProcessEngine = (ProcessEngineImpl) ProcessEngines.getDefaultProcessEngine();
 //    Context.setProcessEngineConfiguration(defaultProcessEngine.getProcessEngineConfiguration());
 

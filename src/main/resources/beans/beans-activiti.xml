@@ -17,7 +17,7 @@
     <!-- Activiti begin -->
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
         <property name="dataSource" ref="dataSource"/>
-       <!--transactionManager要使用和业务功能的同一个事务管理Bean，否则事务不同步-->
+        <!--transactionManager要使用和业务功能的同一个事务管理Bean，否则事务不同步-->
         <property name="transactionManager" ref="transactionManager"/>
         <!-- 
 	        false（默认）：检查数据库表的版本和依赖库的版本， 如果版本不匹配就抛出异常。
@@ -25,8 +25,12 @@
 	        create-drop: 构建流程引擎时创建数据库表， 关闭流程引擎时删除这些表。
          -->
         <property name="databaseSchemaUpdate" value="true"/>
+        <!--  JobExecutor在流程引擎启动时就会激活。 如果不想在流程引擎启动后自动激活JobExecutor，可以设置成false -->
         <property name="jobExecutorActivate" value="false"/>
         <property name="history" value="full"/>
+        <!-- 所有流程定义都被缓存了（解析之后）避免每次使用前都要访问数据库， 因为流程定义数据是不会改变的。 
+                                 默认，不会限制这个缓存。如果想限制流程定义缓存，可以添加如下配置。这个配置会把默认的hashmap缓存替换成LRU缓存，来提供限制。
+                                  当然，这个配置的最佳值跟流程定义的总数有关， 实际使用中会具体使用多少流程定义也有关 -->
         <property name="processDefinitionCacheLimit" value="10"/>
 
         <!-- mail -->

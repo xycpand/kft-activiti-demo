@@ -226,6 +226,12 @@ public class FormKeyController {
                 + " and ( I.USER_ID_ = #{userId} or I.GROUP_ID_ IN (select g.GROUP_ID_ from ACT_ID_MEMBERSHIP g where g.USER_ID_ = #{userId} ) )"
                 + " and RES1.SUSPENSION_STATE_ = #{suspensionState}";
         String sql = asigneeSql + " union all " + needClaimSql;
+        /**
+         * 有时，你需要更强大的查询，比如使用OR条件或不能使用查询API实现的条件。 
+         * 这时，原生查询让你可以编写自己的SQL查询。 返回类型由你使用的查询对象决定，数据会映射到正确的对象上。
+         * 比如，任务，流程实例，执行，等等。 因为查询会作用在数据库上，你必须使用数据库中定义的表名和列名；
+         * 这要求了解内部数据结构， 因此使用原生查询时一定要注意。表名可以通过API获得，可以尽量减少对数据库的依赖。
+         */
         NativeTaskQuery query = taskService.createNativeTaskQuery().sql(sql)
                 .parameter("processDefinitionKey", "leave-formkey").parameter("suspensionState", SuspensionState.ACTIVE.getStateCode())
                 .parameter("userId", user.getId());
