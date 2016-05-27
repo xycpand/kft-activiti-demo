@@ -33,7 +33,7 @@
 		<script type="text/javascript">
 		setTimeout(function() {
 			$('#message').hide('slow');
-		}, 5000);
+		}, 10000);
 		</script>
 	</c:if>
 	<table width="100%" class="need-border">

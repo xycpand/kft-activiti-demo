@@ -31,7 +31,7 @@
 		<script type="text/javascript">
 		setTimeout(function() {
 			$('#message').hide('slow');
-		}, 5000);
+		}, 10000);
 		</script>
 	</c:if>
 	<c:if test="${not empty error}">
@@ -40,7 +40,7 @@
 		<script type="text/javascript">
 		setTimeout(function() {
 			$('#error').hide('slow');
-		}, 5000);
+		}, 10000);
 		</script>
 	</c:if>
 	<form:form id="inputForm" action="${ctx}/oa/leave/start" method="post" class="form-horizontal">

@@ -33,6 +33,7 @@
     <filter-name>openEntityManagerInViewFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+<!--   JSONPFilter增加jsonp支持，拦截处理含有callback参数的请求 -->
   <filter>
     <filter-name>JSONPFilter</filter-name>
     <filter-class>org.activiti.explorer.JsonpCallbackFilter</filter-class>

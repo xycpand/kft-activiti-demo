@@ -49,7 +49,7 @@
     <script type="text/javascript">
         setTimeout(function() {
             $('#message').hide('slow');
-        }, 5000);
+        }, 10000);
     </script>
 </c:if>
 <c:if test="${not empty errorMsg}">
@@ -58,7 +58,7 @@
     <script type="text/javascript">
         setTimeout(function() {
             $('#messageError').hide('slow');
-        }, 5000);
+        }, 10000);
     </script>
 </c:if>
 <div class="row">

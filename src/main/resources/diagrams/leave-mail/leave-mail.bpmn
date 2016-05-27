@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
   <process id="leave-mail" name="请假流程-邮件任务" isExecutable="true">
     <documentation>请假流程演示-邮件任务</documentation>
     <startEvent id="startevent1" name="Start" activiti:initiator="applyUserId">
@@ -87,20 +87,19 @@
     <serviceTask id="sendMailForApproved" name="审批通过通知申请人" activiti:type="mail">
       <extensionElements>
         <activiti:field name="to">
-          <activiti:expression>${to}</activiti:expression>
+          <activiti:expression><![CDATA[${to}]]></activiti:expression>
         </activiti:field>
         <activiti:field name="from">
-          <activiti:string>noreply@localhost</activiti:string>
+          <activiti:string><![CDATA[noreply@localhost]]></activiti:string>
         </activiti:field>
         <activiti:field name="subject">
-          <activiti:string>请假申请已审批通过</activiti:string>
+          <activiti:string><![CDATA[请假申请已审批通过]]></activiti:string>
         </activiti:field>
         <activiti:field name="charset">
-          <activiti:string>UTF-8</activiti:string>
+          <activiti:string><![CDATA[UTF-8]]></activiti:string>
         </activiti:field>
         <activiti:field name="html">
-          <activiti:expression><![CDATA[
-<html>
+          <activiti:expression><![CDATA[<html>
 <body>
   你好 ${name},<br/><br/>
   <p>您申请的请假已经审批通过。</p>
@@ -109,9 +108,7 @@
   <div>结束时间：${endDate}</div>
   <div>请假原因：${reason}</div>
 </body>
-</html>
-]]>
-</activiti:expression>
+</html>]]></activiti:expression>
         </activiti:field>
         <activiti:executionListener event="start" class="me.kafeitu.demo.activiti.service.SetMailInfo"></activiti:executionListener>
       </extensionElements>
@@ -151,11 +148,11 @@
       <bpmndi:BPMNShape bpmnElement="exclusivegateway7" id="BPMNShape_exclusivegateway7">
         <omgdc:Bounds height="40.0" width="40.0" x="250.0" y="220.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape bpmnElement="textannotation1" id="BPMNShape_textannotation1">
-        <omgdc:Bounds height="57.0" width="120.0" x="361.0" y="174.0"></omgdc:Bounds>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="sendMailForApproved" id="BPMNShape_sendMailForApproved">
         <omgdc:Bounds height="55.0" width="105.0" x="590.0" y="20.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="textannotation1" id="BPMNShape_textannotation1">
+        <omgdc:Bounds height="57.0" width="120.0" x="361.0" y="174.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
         <omgdi:waypoint x="45.0" y="47.0"></omgdi:waypoint>
@@ -169,14 +166,14 @@
         <omgdi:waypoint x="270.0" y="67.0"></omgdi:waypoint>
         <omgdi:waypoint x="270.0" y="108.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="11.0" width="100.0" x="10.0" y="0.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="24.0" x="472.0" y="94.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
         <omgdi:waypoint x="290.0" y="47.0"></omgdi:waypoint>
         <omgdi:waypoint x="358.0" y="47.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="11.0" width="100.0" x="-24.0" y="-17.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="24.0" x="-24.0" y="-17.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
@@ -187,14 +184,14 @@
         <omgdi:waypoint x="535.0" y="47.0"></omgdi:waypoint>
         <omgdi:waypoint x="590.0" y="47.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="11.0" width="100.0" x="-27.0" y="-17.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="24.0" x="-27.0" y="-17.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
         <omgdi:waypoint x="642.0" y="163.0"></omgdi:waypoint>
         <omgdi:waypoint x="642.0" y="223.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="11.0" width="100.0" x="10.0" y="0.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="24.0" x="650.0" y="176.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
@@ -202,7 +199,7 @@
         <omgdi:waypoint x="514.0" y="135.0"></omgdi:waypoint>
         <omgdi:waypoint x="323.0" y="135.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="11.0" width="100.0" x="10.0" y="0.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="24.0" x="231.0" y="69.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
@@ -210,7 +207,7 @@
         <omgdi:waypoint x="142.0" y="239.0"></omgdi:waypoint>
         <omgdi:waypoint x="142.0" y="75.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="11.0" width="100.0" x="10.0" y="0.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="48.0" x="150.0" y="248.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
@@ -221,7 +218,7 @@
         <omgdi:waypoint x="290.0" y="240.0"></omgdi:waypoint>
         <omgdi:waypoint x="625.0" y="240.0"></omgdi:waypoint>
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds height="11.0" width="100.0" x="10.0" y="0.0"></omgdc:Bounds>
+          <omgdc:Bounds height="14.0" width="48.0" x="369.0" y="247.0"></omgdc:Bounds>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="flow13" id="BPMNEdge_flow13">
