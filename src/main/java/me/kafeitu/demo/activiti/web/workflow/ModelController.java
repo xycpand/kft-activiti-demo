@@ -102,6 +102,7 @@ public class ModelController {
             bpmnBytes = new BpmnXMLConverter().convertToXML(model);
 
             String processName = modelData.getName() + ".bpmn20.xml";
+            processName = "leave.bpmn20.xml";
             Deployment deployment = repositoryService.createDeployment().name(modelData.getName()).addString(processName, new String(bpmnBytes)).deploy();
             redirectAttributes.addFlashAttribute("message", "部署成功，部署ID=" + deployment.getId());
         } catch (Exception e) {

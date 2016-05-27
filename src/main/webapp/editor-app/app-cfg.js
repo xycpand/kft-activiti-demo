@@ -21,5 +21,5 @@
 var ACTIVITI = ACTIVITI || {};
 
 ACTIVITI.CONFIG = {
-	'contextRoot' : '/kft-activiti-demo/service',
+	'contextRoot' : '/activiti/service',
 };

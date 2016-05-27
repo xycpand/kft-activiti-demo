@@ -146,6 +146,10 @@ public class FormKeyController {
             return "redirect:/login?timeout=true";
         }
         try {
+        	/*
+        	 * 要在启动流程之前设置“已认证用户信息”userId
+        	 * 当流程启动之后可以到表ACT_HI_PROCINST中查看字段START_USER_ID_的值来验证是否生效
+        	 */
             identityService.setAuthenticatedUserId(user.getId());
 
             formService.submitTaskFormData(taskId, formProperties);
@@ -186,6 +190,7 @@ public class FormKeyController {
             return "redirect:/login?timeout=true";
         }
         try {
+        	//要在启动流程之前设置“已认证用户信息”userId
             identityService.setAuthenticatedUserId(user.getId());
 
             ProcessInstance processInstance = formService.submitStartFormData(processDefinitionId, formProperties);

@@ -25,7 +25,7 @@ rm -rf $NO_MAVEN_DIR/WebContent/WEB-INF/views
 
 echo "copying libs to no-maven"
 mvn package -Dmaven.test.skip=true
-cp ./target/kft-activiti-demo/WEB-INF/lib/* $NO_MAVEN_DIR/WebContent/WEB-INF/lib/
+cp ./target/activiti/WEB-INF/lib/* $NO_MAVEN_DIR/WebContent/WEB-INF/lib/
 cd $NO_MAVEN_DIR
 git checkout -- WebContent/WEB-INF/lib/junit-4.10.jar
 git checkout -- WebContent/WEB-INF/lib/servlet-api-2.5.jar
